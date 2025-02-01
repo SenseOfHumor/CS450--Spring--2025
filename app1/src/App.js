@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Child from './Child';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  arr1 = [{name: "James", age: 20}, {name: "Jassica", age: 30}];
+  render() {
+    return (
+      <div>
+        <Child day="Saturday"></Child>
+        <Child day="Sunday"></Child>
+        <Child day="Monday"></Child>
+      </div>
+    );
+  }
 }
-
 export default App;
