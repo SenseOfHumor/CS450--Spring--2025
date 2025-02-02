@@ -29,7 +29,7 @@
     align-items: flex-start;
     padding-left: 20px;
     padding-right: 20px;
-    gap: 60px;
+    gap: 40px;
     
 }
 
@@ -38,16 +38,13 @@
     align-items: flex-start;
     padding-left: 20px;
     padding-right: 20px;
-    gap: 50px;;
+    gap: 30px;;
 }
 
-<<<<<<< HEAD
 #Schools{
-    padding-left: 0px;
+    padding-left: 30px;
 }
 
-=======
->>>>>>> 4c99ce407de437986575829be4551ce57aded890
 
 #Yellow-Line {
     background-color: #ff8800;
