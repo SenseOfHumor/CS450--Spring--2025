@@ -53,9 +53,13 @@ class App extends Component {
     return (
       <div>
         <Header personInfo={this.state.personInfo} contactInfo={this.state.contactInfo}></Header>
+        <hr id = "Yellow-Line"></hr>
         <PersonalProfile profile={this.state.profile}></PersonalProfile>
+        <hr></hr>
         <WorkExperience workExperience={this.state.workExperience}></WorkExperience>
+        <hr></hr>
         <Skills KeySkills={this.state.KeySkills}></Skills>
+        <hr></hr>
         <Education education={this.state.education}></Education>
       </div>
       

@@ -4,8 +4,9 @@ class WorkExperience extends Component {
     render(){
         return (
             <div className="we1">
+                <h2 class="bold">{this.props.workExperience.title}</h2>
                 <div className="we1_c1">
-                    <p class="bold">{this.props.workExperience.title}</p>
+                    
                     <div className="we1_c1_c1">
                         <p class="bold">{this.props.workExperience.job1}</p>
                         <p>{this.props.workExperience.job1Content}</p>

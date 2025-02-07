@@ -6,14 +6,14 @@ class Header extends Component {
             <div className='hd1'>
                 <div className='hd1_c1'>
                     <div>
-                        <p class="bold">{this.props.personInfo.name}</p>
-                        <p>{this.props.personInfo.occupation}</p>
+                        <h1 class="bold">{this.props.personInfo.name}</h1>
+                        <h3 id="occ">{this.props.personInfo.occupation}</h3>
                     </div>
                 </div>
 
                 <div className='hd1_c2'>
                     <div>
-                        <p>Email: <a class="link">{this.props.contactInfo.email}</a></p>
+                        <p>Email: <a class="link"href={`mailto:${this.props.contactInfo.email}`}>{this.props.contactInfo.email}</a></p>
                         <p>Web: {this.props.contactInfo.web}</p>
                         <p>Mobile: {this.props.contactInfo.mobile}</p>
                     </div>

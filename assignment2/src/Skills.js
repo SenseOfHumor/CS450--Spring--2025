@@ -4,15 +4,21 @@ class Skills extends Component {
     render(){
         return (
             <div className="s1">
+                <h2 class="bold">{this.props.KeySkills.title}</h2>
                 <div className="s1_c1">
-                    <p class="bold">{this.props.KeySkills.title}</p>
                     <div className="s1_c1_c1">
-                        <p>{this.props.KeySkills.content1}</p>
-                        <p>{this.props.KeySkills.content2}</p>
-                        <p>{this.props.KeySkills.content3}</p>
-                        <p>{this.props.KeySkills.content4}</p>
-                        <p>{this.props.KeySkills.content5}</p>
-                        <p>{this.props.KeySkills.content6}</p>
+                        <ul class="sk1">
+                        <li>{this.props.KeySkills.content1}</li>
+                        <li>{this.props.KeySkills.content2}</li>
+                        </ul>
+                        <ul class="sk2">
+                        <li>{this.props.KeySkills.content3}</li>
+                        <li>{this.props.KeySkills.content4}</li>
+                        </ul>
+                        <ul class="sk3">
+                        <li>{this.props.KeySkills.content5}</li>
+                        <li>{this.props.KeySkills.content6}</li>
+                        </ul>
                     </div>
                 </div>
             </div>
