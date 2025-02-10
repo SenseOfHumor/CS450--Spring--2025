@@ -1,9 +1,13 @@
 {
   "files": {
-    "main.js": "/CS450--Spring--2025/assignment1/static/js/main.31d6cfe0.js",
-    "index.html": "/CS450--Spring--2025/assignment1/index.html"
+    "main.css": "/CS450--Spring--2025/assignment2/static/css/main.f037e298.css",
+    "main.js": "/CS450--Spring--2025/assignment2/static/js/main.4d793c5c.js",
+    "index.html": "/CS450--Spring--2025/assignment2/index.html",
+    "main.f037e298.css.map": "/CS450--Spring--2025/assignment2/static/css/main.f037e298.css.map",
+    "main.4d793c5c.js.map": "/CS450--Spring--2025/assignment2/static/js/main.4d793c5c.js.map"
   },
   "entrypoints": [
-    "static/js/main.31d6cfe0.js"
+    "static/css/main.f037e298.css",
+    "static/js/main.4d793c5c.js"
   ]
 }
