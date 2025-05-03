@@ -1,69 +1,69 @@
-// // import React, { Component } from "react";
-// // import * as d3 from "d3";
+import React, { Component } from "react";
+import * as d3 from "d3";
 
-// // class StackComp extends Component {
-// //   componentDidMount() {
-// //     const data = [
-// //       { month: new Date(2023, 0, 1), coffee: 25, tea: 15, juice: 10 },
-// //       { month: new Date(2023, 1, 1), coffee: 30, tea: 20, juice: 15 },
-// //       { month: new Date(2023, 2, 1), coffee: 35, tea: 25, juice: 20 },
-// //       { month: new Date(2023, 3, 1), coffee: 75, tea: 35, juice: 50 },
-// //       { month: new Date(2023, 4, 1), coffee: 70, tea: 10, juice: 25 },
-// //       { month: new Date(2023, 5, 1), coffee: 35, tea: 25, juice: 10 },
-// //       { month: new Date(2023, 6, 1), coffee: 45, tea: 35, juice: 80 },
-// //       { month: new Date(2023, 7, 1), coffee: 55, tea: 25, juice: 90 }
-// //     ];
+class StackComp extends Component {
+  componentDidMount() {
+    const data = [
+      { month: new Date(2023, 0, 1), coffee: 25, tea: 15, juice: 10 },
+      { month: new Date(2023, 1, 1), coffee: 30, tea: 20, juice: 15 },
+      { month: new Date(2023, 2, 1), coffee: 35, tea: 25, juice: 20 },
+      { month: new Date(2023, 3, 1), coffee: 75, tea: 35, juice: 50 },
+      { month: new Date(2023, 4, 1), coffee: 70, tea: 10, juice: 25 },
+      { month: new Date(2023, 5, 1), coffee: 35, tea: 25, juice: 10 },
+      { month: new Date(2023, 6, 1), coffee: 45, tea: 35, juice: 80 },
+      { month: new Date(2023, 7, 1), coffee: 55, tea: 25, juice: 90 }
+    ];
 
-// //     const maxSum = d3.sum([
-// //       d3.max(data, d => d.coffee),
-// //       d3.max(data, d => d.tea),
-// //       d3.max(data, d => d.juice)
-// //     ]);
+    const maxSum = d3.sum([
+      d3.max(data, d => d.coffee),
+      d3.max(data, d => d.tea),
+      d3.max(data, d => d.juice)
+    ]);
 
-// //     const margin = { top: 20, right: 20, bottom: 50, left: 50 },
-// //       width = 600 - margin.left - margin.right,
-// //       height = 400 - margin.top - margin.bottom;
+    const margin = { top: 20, right: 20, bottom: 50, left: 50 },
+      width = 600 - margin.left - margin.right,
+      height = 400 - margin.top - margin.bottom;
 
-// //     const xScale = d3.scaleTime().domain(d3.extent(data, d => d.month)).range([0, width]),
-// //       yScale = d3.scaleLinear().domain([0, maxSum]).range([height, 0]);
+    const xScale = d3.scaleTime().domain(d3.extent(data, d => d.month)).range([0, width]),
+      yScale = d3.scaleLinear().domain([0, maxSum]).range([height, 0]);
 
-// //     const colorScale = d3.scaleOrdinal().domain(["coffee", "tea", "juice"]).range(["brown", "green", "orange"]);
+    const colorScale = d3.scaleOrdinal().domain(["coffee", "tea", "juice"]).range(["brown", "green", "orange"]);
 
-// //     // create stackGenerator
-// //     var stackGenerator = d3.stack().keys(["coffee", "tea", "juice"]).offset(d3.stackOffsetWiggle) // specify the keys to stack
-// //     var stackSeries = stackGenerator(data)
-// //     console.log(stackSeries)
+    // create stackGenerator
+    var stackGenerator = d3.stack().keys(["coffee", "tea", "juice"]).offset(d3.stackOffsetWiggle) // specify the keys to stack
+    var stackSeries = stackGenerator(data)
+    console.log(stackSeries)
 
-// //     // create areaGen
-// //     var areaGen = d3.area().x(d => xScale(d.data.month)).y0(d => yScale(d[0])).y1(d => yScale(d[1])) // d[0] and d[1] are the start and end of the area for each stack
+    // create areaGen
+    var areaGen = d3.area().x(d => xScale(d.data.month)).y0(d => yScale(d[0])).y1(d => yScale(d[1])) // d[0] and d[1] are the start and end of the area for each stack
 
-// //     const svg = d3.select(".container").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom);
-// //     const chartGroup = svg.selectAll(".chart-group").data([null]).join("g").attr("class", "chart-group").attr("transform", `translate(${margin.left}, ${margin.top})`);
+    const svg = d3.select(".container").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom);
+    const chartGroup = svg.selectAll(".chart-group").data([null]).join("g").attr("class", "chart-group").attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-// //     // Draw areas
-// //     chartGroup.selectAll(".myareachart")
-// //     .data(stackSeries) // pass in the stack series
-// //     .join("path") // create a path for each stack
-// //     .attr("class", "myareachart") // for styling
-// //     .attr("d", d=>{
-// //       console.log(areaGen(d)) // d is each stack series
-// //       return areaGen(d)
-// //     }) // use the area generator
-// //     .attr("fill", d=> colorScale(d.key))
+    // Draw areas
+    chartGroup.selectAll(".myareachart")
+    .data(stackSeries) // pass in the stack series
+    .join("path") // create a path for each stack
+    .attr("class", "myareachart") // for styling
+    .attr("d", d=>{
+      console.log(areaGen(d)) // d is each stack series
+      return areaGen(d)
+    }) // use the area generator
+    .attr("fill", d=> colorScale(d.key))
 
 
-// //     // Draw x-axis
-// //     chartGroup.selectAll(".x-axis").data([null]).join("g").attr("class", "x-axis").attr("transform", `translate(0, ${height})`).call(d3.axisBottom(xScale).ticks(d3.timeMonth.every(1)).tickFormat(d3.timeFormat("%b")));
-// //     // Draw y-axis
-// //     chartGroup.selectAll(".y-axis").data([null]).join("g").attr("class", "y-axis").call(d3.axisLeft(yScale).ticks(5));
-// //   }
+    // Draw x-axis
+    chartGroup.selectAll(".x-axis").data([null]).join("g").attr("class", "x-axis").attr("transform", `translate(0, ${height})`).call(d3.axisBottom(xScale).ticks(d3.timeMonth.every(1)).tickFormat(d3.timeFormat("%b")));
+    // Draw y-axis
+    chartGroup.selectAll(".y-axis").data([null]).join("g").attr("class", "y-axis").call(d3.axisLeft(yScale).ticks(5));
+  }
 
-// //   render() {
-// //     return <svg className="container"></svg>;
-// //   }
-// // }
+  render() {
+    return <svg className="container"></svg>;
+  }
+}
 
-// // export default StackComp;
+export default StackComp;
 
 
 // import React, { Component } from "react";
@@ -251,54 +251,54 @@
 // export default App;
 
 
-import React, { Component } from "react";
-import * as d3 from "d3";
+// import React, { Component } from "react";
+// import * as d3 from "d3";
 
-class TreeMap extends Component {
-  componentDidMount() {
-    const data = {
-      "name": "A1",
-      "children": [
-        {
-          "name": "B1",
-          "children": [
-            { "name": "C1", "value": 100 },
-            { "name": "C2", "value": 300 },
-            { "name": "C3", "value": 200 }
-          ]
-        },
-        { "name": "B2", "value": 200 }
-      ]
-    };
-
-
-    // Hierarchy setup with value summing
-    const h_data = d3.hierarchy(data).sum(d => d.value); //.sum() traverses the tree and sets .value on each node to be the sum of its children.
-    console.log(h_data)
-
-    // Define the treemap layout
-    const treemapLayout = d3.treemap().size([400, 200]).paddingOuter(16);
-
-    // Compute the treemap layout
-    treemapLayout(h_data);
-
-    // Select the container and join groups for each node
-    d3.select('.container').selectAll('g').data(h_data.descendants()).join('g').attr("transform",d=>`translate(${d.x0},${d.y0})`)
-    .attr('add_rects',function(d){
-        d3.select(this).selectAll('rect').data([null]).join("rect").attr('width',d.x1-d.x0).attr('height',d.y1-d.y0).attr('fill','gray').attr("stroke",'white')
-    })
-    .attr('add_text',function(d){
-        d3.select(this).selectAll('text').data([null]).join("text").text(d.data.name).attr('dx',3).attr('dy',17).style('font-size',12)
-    })
+// class TreeMap extends Component {
+//   componentDidMount() {
+//     const data = {
+//       "name": "A1",
+//       "children": [
+//         {
+//           "name": "B1",
+//           "children": [
+//             { "name": "C1", "value": 100 },
+//             { "name": "C2", "value": 300 },
+//             { "name": "C3", "value": 200 }
+//           ]
+//         },
+//         { "name": "B2", "value": 200 }
+//       ]
+//     };
 
 
-  }
+//     // Hierarchy setup with value summing
+//     const h_data = d3.hierarchy(data).sum(d => d.value); //.sum() traverses the tree and sets .value on each node to be the sum of its children.
+//     console.log(h_data)
 
-  render() {
-    return (
-      <svg className="container" width="400" height="200"></svg>
-    );
-  }
-}
+//     // Define the treemap layout
+//     const treemapLayout = d3.treemap().size([400, 200]).paddingOuter(16);
 
-export default TreeMap;
+//     // Compute the treemap layout
+//     treemapLayout(h_data);
+
+//     // Select the container and join groups for each node
+//     d3.select('.container').selectAll('g').data(h_data.descendants()).join('g').attr("transform",d=>`translate(${d.x0},${d.y0})`)
+//     .attr('add_rects',function(d){
+//         d3.select(this).selectAll('rect').data([null]).join("rect").attr('width',d.x1-d.x0).attr('height',d.y1-d.y0).attr('fill','gray').attr("stroke",'white')
+//     })
+//     .attr('add_text',function(d){
+//         d3.select(this).selectAll('text').data([null]).join("text").text(d.data.name).attr('dx',3).attr('dy',17).style('font-size',12)
+//     })
+
+
+//   }
+
+//   render() {
+//     return (
+//       <svg className="container" width="400" height="200"></svg>
+//     );
+//   }
+// }
+
+// export default TreeMap;
